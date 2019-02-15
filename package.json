@@ -1,0 +1,20 @@
+{
+  "name": "vue-pannellum",
+  "version": "0.1.0",
+  "main": "src/vue-pannellum.vue",
+  "scripts": {
+    "dev": "parcel demo/index.html"
+  },
+  "repository": "git@github.com:jarvisniu/vue-pannellum.git",
+  "author": "Jarvis Niu <jarvisniu@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.5.2",
+    "pannellum": "^2.4.1",
+    "parcel-bundler": "^1.11.0",
+    "stylus": "^0.54.5",
+    "vue": "^2.6.6",
+    "vue-hot-reload-api": "^2.3.2",
+    "vue-template-compiler": "^2.6.6"
+  }
+}
