@@ -1,16 +1,26 @@
 {
   "name": "vue-pannellum",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "src/vue-pannellum.vue",
   "scripts": {
     "dev": "parcel demo/index.html"
   },
+  "keywords": [
+    "vue",
+    "pannellum",
+    "panorama",
+    "equirectangular",
+    "cubemap",
+    "viewer"
+  ],
   "repository": "git@github.com:jarvisniu/vue-pannellum.git",
   "author": "Jarvis Niu <jarvisniu@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "pannellum": "^2.4.1"
+  },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.5.2",
-    "pannellum": "^2.4.1",
     "parcel-bundler": "^1.11.0",
     "stylus": "^0.54.5",
     "vue": "^2.6.6",
