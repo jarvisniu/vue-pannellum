@@ -1,6 +1,10 @@
 <!--Panorama viewer pannellum wrap.-->
 <template>
-  <div></div>
+  <div class="vue-pannellum">
+    <div class="default-slot">
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -16,9 +20,16 @@ export default {
     showZoom: { type: Boolean, default: false },
     showFullscreen: { type: Boolean, default: false },
     compass: { type: Boolean, default: false },
-    hfov: { type: Number, default: 100 },
+    hfov: { type: Number, default: 75 },
+    minHfov: { type: Number, default: 30 },
+    maxHfov: { type: Number, default: 120 },
     yaw: { type: Number, default: 0 },
     pitch: { type: Number, default: 0 },
+  },
+  data () {
+    return {
+      viewer: null,
+    }
   },
   computed: {
     srcOption () {
@@ -36,27 +47,57 @@ export default {
       }
     },
   },
+  watch: {
+    src (val) {
+      this.$el.innerHTML = ''
+      this.$nextTick(this.load)
+    },
+  },
   mounted () {
-    let options = {
-      type: typeof this.src === 'string' ? 'equirectangular' : 'cubemap',
-      autoLoad: this.autoLoad,
-      autoRotate: this.autoRotate === true ? -2 : 0,
-      compass: this.compass,
-      preview: this.preview,
-      hfov: this.hfov,
-      yaw: this.yaw,
-      pitch: this.pitch,
-      // haov: 149.87,
-      // vaov: 54.15,
+    this.load()
+  },
+  methods: {
+    load () {
+      let options = {
+        type: typeof this.src === 'string' ? 'equirectangular' : 'cubemap',
+        autoLoad: this.autoLoad,
+        autoRotate: this.autoRotate === true ? -2 : 0,
+        compass: this.compass,
+        preview: this.preview,
+        hfov: this.hfov,
+        yaw: this.yaw,
+        pitch: this.pitch,
+        minHfov: this.minHfov,
+        maxHfov: this.maxHfov,
+        // haov: 149.87,
+        // vaov: 54.15,
+      }
+      Object.assign(options, this.srcOption)
+      this.viewer = window.pannellum.viewer(this.$el, options)
+      if (this.showZoom === false) {
+        this.$el.querySelector('.pnlm-zoom-controls').style.display = 'none'
+      }
+      if (this.showFullscreen === false) {
+        this.$el.querySelector('.pnlm-fullscreen-toggle-button').style.display = 'none'
+      }
     }
-    Object.assign(options, this.srcOption)
-    window.pannellum.viewer(this.$el, options)
-    if (this.showZoom === false) {
-      this.$el.querySelector('.pnlm-zoom-controls').style.display = 'none'
-    }
-    if (this.showFullscreen === false) {
-      this.$el.querySelector('.pnlm-fullscreen-toggle-button').style.display = 'none'
-    }
-  }
+  },
 }
 </script>
+
+<style>
+.vue-pannellum {
+  position: relative;
+}
+
+.vue-pannellum .pnlm-about-msg {
+  display: none !important;
+}
+
+.default-slot {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+</style>

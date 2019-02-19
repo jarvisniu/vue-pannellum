@@ -31,10 +31,11 @@ component props:
 - **showZoom (boolean, default: false)**: Show the zoom-in and zoom-out button.
 - **showFullscreen (boolean, default: false)**: Show the fullscreen button.
 - **compass (boolean, default: false)**: Show the compass indicator.
-- **hfov (number, default: 100)**: The initial horizontal field of view in degrees.
+- **hfov (number, default: 75)**: The initial horizontal field of view in degrees.
 - **yaw (number, default: 0)**: The initial yaw position in degrees.
 - **pitch (number, default: 0)**: The initial pitch position in degrees.
-
+- **minHfov (number, default: 30)**: The minimum limit of hfov in degrees.
+- **maxHfov (number, default: 120)**: The maximum limit of hfov in degrees.
 
 ## Features
 - [x] type
@@ -44,8 +45,9 @@ component props:
 - [x] show/hide control button
 - [x] preview
 - [x] initial view: hfov/yaw/pitch
-- [ ] slot
-- [ ] watch props changing
+- [x] slot
+- [x] watch url changing
+- [x] max/minHfov
 
 ## Licence
 

@@ -2,7 +2,7 @@
   <div class="app">
     <v-pannellum
       class="pannellum"
-      :src="equirectangularUrl"
+      :src="url"
       :preview="cubemapUrls.px"
       auto-rotate
       :auto-load="true"
@@ -13,6 +13,10 @@
       :yaw="-90"
       :pitch="0"
     ></v-pannellum>
+    <div class="controls">
+      <button @click="url = equirectangularUrl">equirect</button>
+      <button @click="url = cubemapUrls">cubemaps</button>
+    </div>
   </div>
 </template>
 
@@ -30,6 +34,7 @@ import nz from './cubemaps/nz.jpg'
 export default {
   data () {
     return {
+      url: equirectangularUrl,
       equirectangularUrl,
       cubemapUrls: { pz, px, nz, nx, py, ny },
     }
@@ -47,4 +52,8 @@ body
 body
   margin 0
 
+.controls
+  position fixed
+  left 10px
+  bottom 10px
 </style>
