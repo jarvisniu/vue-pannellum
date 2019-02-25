@@ -1,6 +1,6 @@
 {
   "name": "vue-pannellum",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "src/vue-pannellum.vue",
   "scripts": {
     "dev": "parcel demo/index.html"
@@ -17,6 +17,7 @@
   "author": "Jarvis Niu <jarvisniu@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "pannellum": "^2.4.1"
   },
   "devDependencies": {

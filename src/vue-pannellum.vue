@@ -1,18 +1,26 @@
 <!--Panorama viewer pannellum wrap.-->
 <template>
-  <div class="vue-pannellum">
+  <div
+    class="vue-pannellum"
+    @mouseup="onMouseUp"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+  >
+    <div class="info">{{ info }}</div>
     <div class="default-slot">
-      <slot></slot>
+      <slot/>
     </div>
   </div>
 </template>
 
 <script>
+import _debounce from 'lodash.debounce'
 import 'pannellum'
 import 'pannellum/build/pannellum.css'
 
 export default {
   props: {
+    debug: { type: Boolean, default: false },
     src: { type: [String, Object], required: true },
     preview: { type: String, default: '' },
     autoLoad: { type: Boolean, default: true },
@@ -29,6 +37,7 @@ export default {
   data () {
     return {
       viewer: null,
+      info: '',
     }
   },
   computed: {
@@ -80,14 +89,37 @@ export default {
       if (this.showFullscreen === false) {
         this.$el.querySelector('.pnlm-fullscreen-toggle-button').style.display = 'none'
       }
-    }
+    },
+    onMouseUp () {
+      if (this.debug) this.info += ' mu'
+      this.debounceRotate()
+    },
+    onTouchMove () {
+      if (this.debug) this.info += ' tm'
+    },
+    onTouchEnd () {
+      if (this.debug) this.info += ' te'
+      this.debounceRotate()
+    },
+    debounceRotate: _debounce(function () {
+      if (this.autoRotate) this.viewer.startAutoRotate()
+    }, 3000),
   },
 }
 </script>
 
-<style>
+<style scoped>
 .vue-pannellum {
   position: relative;
+}
+
+.info {
+  position: absolute;
+  background-color: hsla(0, 0%, 100%, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 .vue-pannellum .pnlm-about-msg {
