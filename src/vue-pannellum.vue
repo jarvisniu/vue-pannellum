@@ -25,6 +25,7 @@ export default {
     preview: { type: String, default: '' },
     autoLoad: { type: Boolean, default: true },
     autoRotate: { type: [Number, Boolean], default: 0 },
+    orientation: { type: Boolean, default: false },
     showZoom: { type: Boolean, default: false },
     showFullscreen: { type: Boolean, default: false },
     compass: { type: Boolean, default: false },
@@ -61,6 +62,22 @@ export default {
       this.$el.innerHTML = ''
       this.$nextTick(this.load)
     },
+    autoRotate (val) {
+      if (val) {
+        this.viewer.startAutoRotate()
+      } else {
+        this.viewer.stopAutoRotate()
+        if (this.orientation) this.viewer.startOrientation()
+      }
+    },
+    orientation (val) {
+      if (val) {
+        this.viewer.startOrientation()
+      } else {
+        this.viewer.stopOrientation()
+        if (this.autoRotate) this.viewer.startAutoRotate()
+      }
+    },
   },
   mounted () {
     this.load()
@@ -71,6 +88,7 @@ export default {
         type: typeof this.src === 'string' ? 'equirectangular' : 'cubemap',
         autoLoad: this.autoLoad,
         autoRotate: this.autoRotate === true ? -2 : 0,
+        orientationOnByDefault: this.orientation,
         compass: this.compass,
         preview: this.preview,
         hfov: this.hfov,
@@ -102,11 +120,23 @@ export default {
       this.debounceRotate()
     },
     debounceRotate: _debounce(function () {
-      if (this.autoRotate) this.viewer.startAutoRotate()
+      // priority of orientation is higher
+      if (this.orientation) this.viewer.startOrientation()
+      else if (this.autoRotate) this.viewer.startAutoRotate()
     }, 3000),
   },
 }
 </script>
+
+<style>
+.pnlm-ui .pnlm-about-msg {
+  display: none !important;
+}
+
+.pnlm-ui .pnlm-orientation-button {
+  display: none !important;
+}
+</style>
 
 <style scoped>
 .vue-pannellum {
@@ -120,10 +150,6 @@ export default {
   left: 0;
   width: 100%;
   z-index: 2;
-}
-
-.vue-pannellum .pnlm-about-msg {
-  display: none !important;
 }
 
 .default-slot {

@@ -28,6 +28,7 @@ component props:
 - **preview**: The preview image url before loaded.
 - **autoLoad (boolean, default: true)**: Whether automatically load.
 - **autoRotate (number|boolean, default: 0)**: The auto-rotate speed, 0 or false means disabled, true is -2.
+- **orientation (boolean, default: false)**: Turn the orientation sensor on (if supported).
 - **showZoom (boolean, default: false)**: Show the zoom-in and zoom-out button.
 - **showFullscreen (boolean, default: false)**: Show the fullscreen button.
 - **compass (boolean, default: false)**: Show the compass indicator.
@@ -38,16 +39,17 @@ component props:
 - **maxHfov (number, default: 120)**: The maximum limit of hfov in degrees.
 
 ## Features
-- [x] type
-- [x] autoLoad
-- [x] autoRotate
-- [x] compass
-- [x] show/hide control button
-- [x] preview
-- [x] initial view: hfov/yaw/pitch
-- [x] slot
-- [x] watch url changing
-- [x] max/minHfov
+- type
+- autoLoad
+- autoRotate
+- compass
+- show/hide control button
+- preview
+- initial view: hfov/yaw/pitch
+- slot
+- watch url changing
+- max/minHfov
+- orientation
 
 ## Licence
 

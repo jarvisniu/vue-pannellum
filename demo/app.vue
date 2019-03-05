@@ -4,7 +4,8 @@
       class="pannellum"
       :src="url"
       :preview="cubemapUrls.px"
-      auto-rotate
+      :auto-rotate="isAutoRotationOn"
+      :orientation="isOrientationOn"
       :auto-load="true"
       :show-zoom="false"
       :show-fullscreen="false"
@@ -16,6 +17,14 @@
     <div class="controls">
       <button @click="url = equirectangularUrl">equirect</button>
       <button @click="url = cubemapUrls">cubemaps</button>
+      <label>
+        <input type="checkbox" v-model="isAutoRotationOn">
+        <span>Auto Rotation</span>
+      </label>
+      <label>
+        <input type="checkbox" v-model="isOrientationOn">
+        <span>Orientation</span>
+      </label>
     </div>
   </div>
 </template>
@@ -37,6 +46,8 @@ export default {
       url: equirectangularUrl,
       equirectangularUrl,
       cubemapUrls: { pz, px, nz, nx, py, ny },
+      isAutoRotationOn: true,
+      isOrientationOn: false,
     }
   },
 }
@@ -56,4 +67,5 @@ body
   position fixed
   left 10px
   bottom 10px
+  z-index 10
 </style>
