@@ -101,6 +101,12 @@ export default {
       }
       Object.assign(options, this.srcOption)
       this.viewer = window.pannellum.viewer(this.$el, options)
+      this.viewer.on('load', () => {
+        this.$emit('load')
+      })
+      this.viewer.on('error', (err) => {
+        this.$emit('error', err)
+      })
       if (this.showZoom === false) {
         this.$el.querySelector('.pnlm-zoom-controls').style.display = 'none'
       }

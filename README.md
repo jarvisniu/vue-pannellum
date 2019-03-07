@@ -1,13 +1,14 @@
 # vue-pannellum
+
 Vue wrap of the brilliant panorama viewer Pannellum
 
 ## Usage
-install
+Install
 ```
 npm install vue-pannellum
 ```
 
-register
+Register
 ```js
 import Vue from 'vue'
 import VuePannellum from 'vue-pannellum'
@@ -15,14 +16,14 @@ import VuePannellum from 'vue-pannellum'
 Vue.component('VPannellumn', VuePannellum)
 ```
 
-use
+Use
 ```html
 <v-pannellum :src="equirectangularUrl"></v-pannellum>
 ```
 
 ## API
 
-component props:
+Component props:
 
 - **src (required)**: The equirectangular image url or cubemap urls in this format: {px: pxUrl, nx: nxUrl, ... }.
 - **preview**: The preview image url before loaded.
@@ -37,6 +38,11 @@ component props:
 - **pitch (number, default: 0)**: The initial pitch position in degrees.
 - **minHfov (number, default: 30)**: The minimum limit of hfov in degrees.
 - **maxHfov (number, default: 120)**: The maximum limit of hfov in degrees.
+
+## Events
+
+- `load`: When finish loading.
+- `error`: When an error occurs, error message as parameter.
 
 ## Features
 - type
