@@ -82,6 +82,9 @@ export default {
   mounted () {
     this.load()
   },
+  beforeDestroy() {
+    this.viewer.destroy()
+  },
   methods: {
     load () {
       let options = {

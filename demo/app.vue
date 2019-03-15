@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <v-pannellum
+      v-if="show"
       class="pannellum"
       :src="url"
       :preview="cubemapUrls.px"
@@ -17,6 +18,10 @@
     <div class="controls">
       <button @click="url = equirectangularUrl">equirect</button>
       <button @click="url = cubemapUrls">cubemaps</button>
+      <label>
+        <input type="checkbox" v-model="show">
+        <span>Show</span>
+      </label>
       <label>
         <input type="checkbox" v-model="isAutoRotationOn">
         <span>Auto Rotation</span>
@@ -43,6 +48,7 @@ import nz from './cubemaps/nz.jpg'
 export default {
   data () {
     return {
+      show: true,
       url: equirectangularUrl,
       equirectangularUrl,
       cubemapUrls: { pz, px, nz, nx, py, ny },
