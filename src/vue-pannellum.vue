@@ -62,6 +62,19 @@ export default {
       this.$el.innerHTML = ''
       this.$nextTick(this.load)
     },
+    hfov (val) {
+      if (this.viewer) this.viewer.setHfov(val)
+    },
+    maxHfov (val) {
+      if (this.viewer) {
+        this.viewer.setHfovBounds([this.minHfov, this.maxHfov])
+      }
+    },
+    minHfov (val) {
+      if (this.viewer) {
+        this.viewer.setHfovBounds([this.minHfov, this.maxHfov])
+      }
+    },
     autoRotate (val) {
       if (val) {
         this.viewer.startAutoRotate()
