@@ -39,6 +39,7 @@ export default {
     return {
       viewer: null,
       info: '',
+      rafId: -1,
     }
   },
   computed: {
@@ -63,7 +64,13 @@ export default {
       this.$nextTick(this.load)
     },
     hfov (val) {
-      if (this.viewer) this.viewer.setHfov(val)
+      if (this.viewer) this.viewer.setHfov(val, false)
+    },
+    yaw (val) {
+      if (this.viewer) this.viewer.setYaw(val, false)
+    },
+    pitch (val) {
+      if (this.viewer) this.viewer.setPitch(val, false)
     },
     maxHfov (val) {
       if (this.viewer) {
@@ -94,9 +101,11 @@ export default {
   },
   mounted () {
     this.load()
+    this.rafId = window.requestAnimationFrame(this.loop)
   },
   beforeDestroy() {
     this.viewer.destroy()
+    window.cancelAnimationFrame(this.rafId)
   },
   methods: {
     load () {
@@ -129,6 +138,15 @@ export default {
       if (this.showFullscreen === false) {
         this.$el.querySelector('.pnlm-fullscreen-toggle-button').style.display = 'none'
       }
+    },
+    loop () {
+      this.rafId = window.requestAnimationFrame(this.loop)
+      let hfov = this.viewer.getHfov()
+      let yaw = this.viewer.getYaw()
+      let pitch = this.viewer.getPitch()
+      if (hfov != this.hfov) this.$emit('update:hfov', hfov)
+      if (yaw != this.yaw) this.$emit('update:yaw', yaw)
+      if (pitch != this.pitch) this.$emit('update:pitch', pitch)
     },
     onMouseUp () {
       if (this.debug) this.info += ' mu'

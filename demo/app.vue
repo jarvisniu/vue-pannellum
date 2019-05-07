@@ -11,9 +11,9 @@
       :show-zoom="false"
       :show-fullscreen="false"
       :compass="false"
-      :hfov="90"
-      :yaw="-90"
-      :pitch="0"
+      :hfov.sync="hfov"
+      :yaw.sync="yaw"
+      :pitch.sync="pitch"
     ></v-pannellum>
     <div class="controls">
       <button @click="url = equirectangularUrl">equirect</button>
@@ -21,6 +21,18 @@
       <label>
         <input type="checkbox" v-model="show">
         <span>Show</span>
+      </label>
+      <label>
+        <span>Hfov</span>
+        <input type="text" v-model.number="hfov" style="width: 50px;">
+      </label>
+      <label>
+        <span>Yaw</span>
+        <input type="text" v-model.number="yaw" style="width: 50px;">
+      </label>
+      <label>
+        <span>Pitch</span>
+        <input type="text" v-model.number="pitch" style="width: 50px;">
       </label>
       <label>
         <input type="checkbox" v-model="isAutoRotationOn">
@@ -49,6 +61,9 @@ export default {
   data () {
     return {
       show: true,
+      hfov: 90,
+      yaw: -90,
+      pitch: 0,
       url: equirectangularUrl,
       equirectangularUrl,
       cubemapUrls: { pz, px, nz, nx, py, ny },
