@@ -135,10 +135,12 @@ export default {
         this.$emit('error', err)
       })
       if (this.showZoom === false) {
-        this.$el.querySelector('.pnlm-zoom-controls').style.display = 'none'
+        let el = this.$el.querySelector('.pnlm-zoom-controls')
+        if (el) el.style.display = 'none'
       }
       if (this.showFullscreen === false) {
-        this.$el.querySelector('.pnlm-fullscreen-toggle-button').style.display = 'none'
+        let el = this.$el.querySelector('.pnlm-fullscreen-toggle-button')
+        if (el) el.style.display = 'none'
       }
     },
     loop () {
