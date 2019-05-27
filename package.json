@@ -1,6 +1,6 @@
 {
   "name": "vue-pannellum",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "main": "src/vue-pannellum.vue",
   "scripts": {
     "dev": "parcel demo/index.html --port 5200"
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.5.2",
-    "parcel-bundler": "^1.11.0",
+    "parcel-bundler": "^1.12.3",
     "stylus": "^0.54.5",
     "vue": "^2.6.6",
     "vue-hot-reload-api": "^2.3.2",

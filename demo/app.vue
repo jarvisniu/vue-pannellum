@@ -10,7 +10,8 @@
       :auto-load="true"
       :show-zoom="false"
       :show-fullscreen="false"
-      :compass="false"
+      :compass="true"
+      :hotSpots="hotSpots"
       :hfov.sync="hfov"
       :yaw.sync="yaw"
       :pitch.sync="pitch"
@@ -20,18 +21,18 @@
       <button @click="url = cubemapUrls">cubemaps</button>
       <label>
         <input type="checkbox" v-model="show">
-        <span>Show</span>
+        <span>Show |</span>
       </label>
       <label>
-        <span>Hfov</span>
+        <span>Hfov:</span>
         <input type="text" v-model.number="hfov" style="width: 50px;">
       </label>
       <label>
-        <span>Yaw</span>
+        <span>Yaw:</span>
         <input type="text" v-model.number="yaw" style="width: 50px;">
       </label>
       <label>
-        <span>Pitch</span>
+        <span>Pitch:</span>
         <input type="text" v-model.number="pitch" style="width: 50px;">
       </label>
       <label>
@@ -48,6 +49,7 @@
 
 <script>
 import equirectangularUrl from './equirectangular/wooden-lounge.png'
+// import equirectangularUrl from './equirectangular/cube.jpg'
 
 import px from './cubemaps/px.jpg'
 import nx from './cubemaps/nx.jpg'
@@ -55,7 +57,6 @@ import py from './cubemaps/py.jpg'
 import ny from './cubemaps/ny.jpg'
 import pz from './cubemaps/pz.jpg'
 import nz from './cubemaps/nz.jpg'
-
 
 export default {
   data () {
@@ -67,8 +68,29 @@ export default {
       url: equirectangularUrl,
       equirectangularUrl,
       cubemapUrls: { pz, px, nz, nx, py, ny },
-      isAutoRotationOn: true,
+      isAutoRotationOn: false,
       isOrientationOn: false,
+      hotSpots: [
+        {
+          pitch: 14.1,
+          yaw: 1.5,
+          type: "info",
+          text: "Click me to Google",
+          URL: "https://google.com/"
+        },
+        {
+          pitch: 0,
+          yaw: -90,
+          type: "info",
+          text: "I am <b>bold</b> text."
+        },
+        {
+          pitch: -0.9,
+          yaw: 144.4,
+          type: "info",
+          text: "Info 2"
+        }
+      ],
     }
   },
 }

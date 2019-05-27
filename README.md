@@ -33,6 +33,7 @@ Component props:
 - **showZoom (boolean, default: false)**: Show the zoom-in and zoom-out button.
 - **showFullscreen (boolean, default: false)**: Show the fullscreen button.
 - **compass (boolean, default: false)**: Show the compass indicator.
+- **hotSpots (array, default: [])**: Show information on the panorama.
 - **hfov (number, default: 75)**: The initial horizontal field of view in degrees.
 - **yaw (number, default: 0)**: The initial yaw position in degrees.
 - **pitch (number, default: 0)**: The initial pitch position in degrees.

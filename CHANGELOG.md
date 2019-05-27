@@ -1,6 +1,10 @@
 
 ## Changelog
 
+### v0.4.7 - 2019/05/27
+
+- Support `hotSpots`.
+
 ### v0.4.6 - 2019/05/14
 
 - Fix an error on some mobile browser.
