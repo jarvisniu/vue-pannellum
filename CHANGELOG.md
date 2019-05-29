@@ -1,6 +1,10 @@
 
 ## Changelog
 
+### v0.4.8 - 2019/05/29
+
+- Limit pitch within -90 and 90.
+
 ### v0.4.7 - 2019/05/27
 
 - Support `hotSpots`.

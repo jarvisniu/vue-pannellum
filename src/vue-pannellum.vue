@@ -150,6 +150,8 @@ export default {
       let hfov = this.viewer.getHfov()
       let yaw = this.viewer.getYaw()
       let pitch = this.viewer.getPitch()
+      if (pitch > 90) pitch = 90
+      else if (pitch < -90) pitch = -90
       if (hfov != this.hfov) this.$emit('update:hfov', hfov)
       if (yaw != this.yaw) this.$emit('update:yaw', yaw)
       if (pitch != this.pitch) this.$emit('update:pitch', pitch)
