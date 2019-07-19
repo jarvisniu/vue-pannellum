@@ -1,6 +1,10 @@
 
 ## Changelog
 
+### v0.5.0 - 2019/07/19
+
+- Update dependency `pannellum` to `v2.5.2`
+
 ### v0.4.8 - 2019/05/29
 
 - Limit pitch within -90 and 90.

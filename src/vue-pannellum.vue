@@ -14,11 +14,10 @@
 </template>
 
 <script>
+import 'pannellum'
+import 'pannellum/build/pannellum.css'
+
 import _debounce from 'lodash.debounce'
-// import 'pannellum'
-// import 'pannellum/build/pannellum.css'
-import '../lib/pannellum/pannellum.js'
-import '../lib/pannellum/pannellum.css'
 
 export default {
   props: {
