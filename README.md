@@ -18,7 +18,7 @@ Vue.component('VPannellumn', VuePannellum)
 
 Use
 ```html
-<v-pannellum :src="equirectangularUrl"></v-pannellum>
+<v-pannellum :src="equirectangularUrl" style="height: 500px;"></v-pannellum>
 ```
 
 ## API
