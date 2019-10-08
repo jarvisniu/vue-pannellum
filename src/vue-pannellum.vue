@@ -155,6 +155,9 @@ export default {
       if (yaw != this.yaw) this.$emit('update:yaw', yaw)
       if (pitch != this.pitch) this.$emit('update:pitch', pitch)
     },
+    getViewer () {
+      return this.viewer
+    },
     onMouseUp () {
       if (this.debug) this.info += ' mu'
       this.debounceRotate()
