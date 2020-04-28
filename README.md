@@ -13,7 +13,7 @@ Register
 import Vue from 'vue'
 import VuePannellum from 'vue-pannellum'
 
-Vue.component('VPannellumn', VuePannellum)
+Vue.component('VPannellum', VuePannellum)
 ```
 
 Use
