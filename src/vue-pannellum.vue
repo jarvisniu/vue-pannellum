@@ -29,6 +29,7 @@ export default {
     orientation: { type: Boolean, default: false },
     draggable: { type: Boolean, default: true },
     mouseZoom: { type: Boolean, default: true },
+    showInfo: { type: Boolean, default: false },
     showZoom: { type: Boolean, default: false },
     showFullscreen: { type: Boolean, default: false },
     compass: { type: Boolean, default: false },
@@ -48,17 +49,36 @@ export default {
   },
   computed: {
     srcOption () {
-      return typeof this.src === 'string' ? {
-        panorama: this.src,
-      } : {
-        cubeMap: [
-          this.src.pz,
-          this.src.px,
-          this.src.nz,
-          this.src.nx,
-          this.src.py,
-          this.src.ny,
-        ]
+      if (typeof this.src === 'string') {
+        return {
+          type: 'equirectangular',
+          panorama: this.src,
+          hotSpots: this.hotSpots,
+        }
+      } else if (typeof this.src === 'object') {
+        if (this.src.px && this.src.ny) {
+          return {
+            type: 'cubemap',
+            cubeMap: [
+              this.src.pz,
+              this.src.px,
+              this.src.nz,
+              this.src.nx,
+              this.src.py,
+              this.src.ny,
+            ],
+            hotSpots: this.hotSpots,
+          }
+        } else if (this.src.scenes) {
+          return {
+            default: this.src.default,
+            scenes: this.src.scenes,
+          }
+        } else {
+          console.error('[vue-pannellum] Unknown src type')
+        }
+      } else {
+        console.error('[vue-pannellum] Unknown src type: ' + typeof this.src)
       }
     },
   },
@@ -114,14 +134,12 @@ export default {
   methods: {
     load () {
       let options = {
-        type: typeof this.src === 'string' ? 'equirectangular' : 'cubemap',
         autoLoad: this.autoLoad,
         autoRotate: this.autoRotate === true ? -2 : 0,
         orientationOnByDefault: this.orientation,
         draggable: this.draggable,
         mouseZoom: this.mouseZoom,
         compass: this.compass,
-        hotSpots: this.hotSpots,
         preview: this.preview,
         hfov: this.hfov,
         yaw: this.yaw,
@@ -130,8 +148,9 @@ export default {
         maxHfov: this.maxHfov,
         // haov: 149.87,
         // vaov: 54.15,
+        ...this.srcOption,
       }
-      Object.assign(options, this.srcOption)
+      // console.log('options', options)
       this.viewer = window.pannellum.viewer(this.$el, options)
       this.viewer.on('load', () => {
         this.$emit('load')
@@ -139,6 +158,11 @@ export default {
       this.viewer.on('error', (err) => {
         this.$emit('error', err)
       })
+      if (this.showInfo === false) {
+        let el = this.$el.querySelector('.pnlm-panorama-info')
+        // Note: Using display will not work when in tour mode and switch scene
+        if (el) el.style.visibility = 'hidden'
+      }
       if (this.showZoom === false) {
         let el = this.$el.querySelector('.pnlm-zoom-controls')
         if (el) el.style.display = 'none'

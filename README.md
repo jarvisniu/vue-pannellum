@@ -21,11 +21,60 @@ Use
 <v-pannellum :src="equirectangularUrl" style="height: 500px;"></v-pannellum>
 ```
 
+## Src types
+
+### 1 Equirectangular
+
+  ```js
+  src = equirectangularUrl
+  ```
+
+### 2 Cubemap
+
+  ```js
+  src = {
+    px: cubemapUrlPx,
+    nx: cubemapUrlNx,
+    py: cubemapUrlPy,
+    ny: cubemapUrlNy,
+    pz: cubemapUrlPz,
+    nz: cubemapUrlNz,
+  }
+  ```
+
+
+### 3 Tour ([See more details](https://pannellum.org/documentation/examples/tour/))
+
+```js
+src = {
+  default: {
+    firstScene: 'cube',
+  },
+  scenes: {
+    cube: {
+      hfov: 110,
+      pitch: -3,
+      yaw: 117,
+      type: 'equirectangular',
+      panorama: equirectangularUrlCube,
+      hotSpots: [...],
+    },
+    grid: {
+      hfov: 110,
+      yaw: 5,
+      type: 'equirectangular',
+      panorama: equirectangularUrlGrid,
+      hotSpots: [...],
+    },
+  },
+}
+```
+
 ## API
 
-Component props:
+### Component props
 
-- **src (required)**: The equirectangular image url or cubemap urls in this format: {px: pxUrl, nx: nxUrl, ... }.
+- **src (required)**: See above.
 - **preview**: The preview image url before loaded.
 - **autoLoad (boolean, default: true)**: Whether automatically load.
 - **autoRotate (number|boolean, default: 0)**: The auto-rotate speed, 0 or false means disabled, true is -2.
