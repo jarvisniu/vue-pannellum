@@ -30,6 +30,8 @@ Component props:
 - **autoLoad (boolean, default: true)**: Whether automatically load.
 - **autoRotate (number|boolean, default: 0)**: The auto-rotate speed, 0 or false means disabled, true is -2.
 - **orientation (boolean, default: false)**: Turn the orientation sensor on (if supported).
+- **draggable (boolean, default: true)**: Allow rotating with mouse or touch dragging.
+- **mouseZoom (boolean, default: true)**: Allow zooming with mouse.
 - **showZoom (boolean, default: false)**: Show the zoom-in and zoom-out button.
 - **showFullscreen (boolean, default: false)**: Show the fullscreen button.
 - **compass (boolean, default: false)**: Show the compass indicator.

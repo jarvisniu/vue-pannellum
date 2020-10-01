@@ -17,11 +17,10 @@
       :pitch.sync="pitch"
     ></v-pannellum>
     <div class="controls">
-      <button @click="url = equirectangularUrl">equirect</button>
-      <button @click="url = cubemapUrls">cubemaps</button>
       <label>
-        <input type="checkbox" v-model="show">
-        <span>Show |</span>
+        <span>Type:</span>
+        <button @click="url = equirectangularUrl">equirect</button>
+        <button @click="url = cubemapUrls">cubemaps</button>
       </label>
       <label>
         <span>Hfov:</span>
@@ -34,6 +33,10 @@
       <label>
         <span>Pitch:</span>
         <input type="text" v-model.number="pitch" style="width: 50px;">
+      </label>
+      <label>
+        <input type="checkbox" v-model="show">
+        <span>Show</span>
       </label>
       <label>
         <input type="checkbox" v-model="isAutoRotationOn">
@@ -96,19 +99,25 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-html
-body
-.app
-.pannellum
-  height 100%
+<style>
+html,
+body,
+.app,
+.pannellum {
+  height: 100%;
+}
 
-body
-  margin 0
+body {
+  margin: 0;
+}
 
-.controls
-  position fixed
-  left 10px
-  bottom 10px
-  z-index 10
+.controls {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  padding: 5px;
+  border: solid 1px silver;
+  background-color: hsla(0, 0%, 100%, 0.3);
+  z-index: 10;
+}
 </style>
