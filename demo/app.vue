@@ -9,6 +9,7 @@
       :orientation="isOrientationOn"
       :auto-load="true"
       :show-zoom="false"
+      :double-click-zoom="false"
       :show-fullscreen="false"
       :compass="true"
       :hotSpots="hotSpots"

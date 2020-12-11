@@ -1,14 +1,17 @@
 # vue-pannellum
 
-Vue wrap of the brilliant panorama viewer Pannellum
+Vue wrap of the brilliant panorama viewer [Pannellum](https://pannellum.org/)
 
 ## Usage
+
 Install
+
 ```
 npm install vue-pannellum
 ```
 
 Register
+
 ```js
 import Vue from 'vue'
 import VuePannellum from 'vue-pannellum'
@@ -17,6 +20,7 @@ Vue.component('VPannellum', VuePannellum)
 ```
 
 Use
+
 ```html
 <v-pannellum :src="equirectangularUrl" style="height: 500px;"></v-pannellum>
 ```
@@ -25,25 +29,24 @@ Use
 
 ### 1 Equirectangular
 
-  ```js
-  src = equirectangularUrl
-  ```
+```js
+src = equirectangularUrl
+```
 
 ### 2 Cubemap
 
-  ```js
-  src = {
-    px: cubemapUrlPx,
-    nx: cubemapUrlNx,
-    py: cubemapUrlPy,
-    ny: cubemapUrlNy,
-    pz: cubemapUrlPz,
-    nz: cubemapUrlNz,
-  }
-  ```
+```js
+src = {
+  px: cubemapUrlPx,
+  nx: cubemapUrlNx,
+  py: cubemapUrlPy,
+  ny: cubemapUrlNy,
+  pz: cubemapUrlPz,
+  nz: cubemapUrlNz,
+}
+```
 
-
-### 3 Tour ([See more details](https://pannellum.org/documentation/examples/tour/))
+### 3 Tour ([more details](https://pannellum.org/documentation/examples/tour/))
 
 ```js
 src = {
@@ -81,6 +84,7 @@ src = {
 - **orientation (boolean, default: false)**: Turn the orientation sensor on (if supported).
 - **draggable (boolean, default: true)**: Allow rotating with mouse or touch dragging.
 - **mouseZoom (boolean, default: true)**: Allow zooming with mouse.
+- **doubleClickZoom (boolean, default: true)**: Allow zooming with double click.
 - **showZoom (boolean, default: false)**: Show the zoom-in and zoom-out button.
 - **showFullscreen (boolean, default: false)**: Show the fullscreen button.
 - **compass (boolean, default: false)**: Show the compass indicator.
@@ -97,6 +101,7 @@ src = {
 - `error`: When an error occurs, error message as parameter.
 
 ## Features
+
 - type
 - autoLoad
 - autoRotate
