@@ -1,6 +1,6 @@
 {
   "name": "vue-pannellum",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "src/vue-pannellum.vue",
   "scripts": {
     "dev": "parcel demo/index.html --port 5200"
