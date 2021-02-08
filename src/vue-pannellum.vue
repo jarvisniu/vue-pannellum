@@ -40,6 +40,7 @@ export default {
     maxHfov: { type: Number, default: 120 },
     yaw: { type: Number, default: 0 },
     pitch: { type: Number, default: 0 },
+    crossOrigin: {type: String, default: 'anonymous' },
   },
   data () {
     return {
@@ -148,6 +149,7 @@ export default {
         pitch: this.pitch,
         minHfov: this.minHfov,
         maxHfov: this.maxHfov,
+        crossOrigin: this.crossOrigin,
         // haov: 149.87,
         // vaov: 54.15,
         ...this.srcOption,

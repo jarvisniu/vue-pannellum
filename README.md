@@ -94,6 +94,7 @@ src = {
 - **pitch (number, default: 0)**: The initial pitch position in degrees.
 - **minHfov (number, default: 30)**: The minimum limit of hfov in degrees.
 - **maxHfov (number, default: 120)**: The maximum limit of hfov in degrees.
+- **crossOrigin (string, default: anonymous)**: Specify the type of CORS request used. Can be set to `anonymous` or `use-credentials`
 
 ## Events
 
