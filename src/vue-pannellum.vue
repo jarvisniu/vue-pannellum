@@ -131,7 +131,7 @@ export default {
     },
     setNorthOffset: {
       handler(val) {
-        if (!val) return;
+        if (val === false) return;
         this.viewer.setNorthOffset(this.northOffset);
       },
       immediate: true,
@@ -162,7 +162,7 @@ export default {
         minHfov: this.minHfov,
         maxHfov: this.maxHfov,
         crossOrigin: this.crossOrigin,
-        // haov: 149.87,
+        // haov: 360,
         // vaov: 54.15,
         ...this.srcOption,
       };

@@ -95,6 +95,7 @@ src = {
 - **minHfov (number, default: 30)**: The minimum limit of hfov in degrees.
 - **maxHfov (number, default: 120)**: The maximum limit of hfov in degrees.
 - **crossOrigin (string, default: anonymous)**: Specify the type of CORS request used. Can be set to `anonymous` or `use-credentials`
+- **northOffset (number, default: 0)**: North offset in degrees.
 
 ## Events
 
