@@ -136,6 +136,25 @@ export default {
       },
       immediate: true,
     },
+    hotSpots: {
+      handler(val, oldVal) {
+        if (!this.viewer) return;
+        let vm = this;
+        if (oldVal.length) {
+          oldVal.forEach((hotspot) => {
+            vm.viewer.removeHotSpot(hotspot.id);
+          });
+        }
+
+        if (val.length) {
+          val.forEach((hotspot) => {
+            vm.viewer.addHotSpot(hotspot);
+          });
+        }
+      },
+      deep: true,
+      immediate: true,
+    },
   },
   mounted() {
     this.load();
