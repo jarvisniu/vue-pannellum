@@ -141,9 +141,13 @@ export default {
         if (!this.viewer) return;
         let vm = this;
         if (oldVal.length) {
-          oldVal.forEach((hotspot) => {
-            vm.viewer.removeHotSpot(hotspot.id);
-          });
+          try {
+            oldVal.forEach((hotspot) => {
+              vm.viewer.removeHotSpot(hotspot.id);
+            });
+          } catch (err) {
+            console.log(err);
+          }
         }
 
         if (val.length) {
